@@ -255,7 +255,7 @@ export default {
 <style lang="scss" scoped>
 
 section {
-  height: calc(100vh - 70px);
+  height: calc(100vh - #{$headerHeight});
 
 }
 

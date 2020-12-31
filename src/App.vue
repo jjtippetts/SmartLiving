@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 #app {
   /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
@@ -31,6 +31,6 @@ export default {
   /*text-align: center;*/
   /*color: #2c3e50;*/
   /*margin-top: 60px;*/
-  margin-top: 70px;
+  margin-top: $headerHeight;
 }
 </style>

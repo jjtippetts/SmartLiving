@@ -14,6 +14,6 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - #{$headerHeight});
 }
 </style>

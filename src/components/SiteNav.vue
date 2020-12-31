@@ -61,7 +61,7 @@ export default {
 <style lang="scss" scoped>
 
 .navbar {
-  height: 70px
+  height: $headerHeight
 }
 
 .nav-link {

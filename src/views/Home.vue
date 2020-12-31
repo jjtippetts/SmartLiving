@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="container-fluid bg-info p-4 d-flex flex-column align-items-center justify-content-center" id="home-display">
+    <section class="container-fluid bg-primary p-4 d-flex flex-column align-items-center justify-content-center" id="home-display">
       <transition name="slide-fade">
         <h1 v-if="pageLoad" class="display-2 px-5 fw-bolder"><span class="display-1 me-0 fw-bolder">S</span>mart<span
             class="display-1 me-0 fw-bolder">L</span>iving</h1>
@@ -12,7 +12,7 @@
         Get HEALTHIER & STRONGER FASTER.
       </p>
       <h1 class="fw-bolder">Sign Up now. Its FREE</h1>
-      <button class="btn btn-outline-primary border-2 px-5 align-self-center fs-3">Sign Up</button>
+      <button class="btn btn-secondary border-2 px-5 align-self-center fs-3">Sign Up</button>
     </section>
     <section class="container-fluid bg-dark p-4 d-flex flex-column align-items-center justify-content-center" id="home-features">
 
@@ -49,6 +49,6 @@ export default {
 }
 
 section {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - #{$headerHeight});
 }
 </style>
