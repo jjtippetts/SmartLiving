@@ -5,7 +5,7 @@
         <div class="col col-md-8">
           <transition name="fade" mode="out-in">
             <div v-if="showLoginForm" class="row shadow-lg rounded" id="login-container" key="login">
-              <div class="col-5 bg-orange rounded-start p-4">
+              <div class="col-5 bg-secondary rounded-start p-4">
                 <h1>Login</h1>
                 <p>Welcome back!</p>
               </div>
@@ -39,7 +39,7 @@
                     <hr class="flex-grow-1 my-0">
                   </div>
                   <div class="d-flex flex-wrap justify-content-around justify-content-xl-between">
-                    <button @click="loginWithFacebook()" class="btn btn-primary mb-3" type="button">
+                    <button @click="loginWithFacebook()" class="btn btn-facebook mb-3" type="button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                            class="bi bi-facebook" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -47,7 +47,7 @@
                       </svg>
                       Facebook
                     </button>
-                    <button @click="loginWithGoogle()" class="btn btn-danger mb-3" type="button">
+                    <button @click="loginWithGoogle()" class="btn btn-google mb-3" type="button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                            class="bi bi-google" viewBox="0 0 16 16">
                         <path
@@ -55,7 +55,7 @@
                       </svg>
                       Google
                     </button>
-                    <button @click="loginWithTwitter()" class="btn btn-secondary mb-3" type="button">
+                    <button @click="loginWithTwitter()" class="btn btn-twitter mb-3" type="button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                            class="bi bi-twitter" viewBox="0 0 16 16">
                         <path
@@ -68,7 +68,7 @@
               </div>
             </div>
             <div v-else class="row shadow-lg rounded" id="sign-up-container" key="'signUp">
-              <div class="col-5 bg-purple rounded-start p-4">
+              <div class="col-5 bg-primary rounded-start p-4">
                 <h1>Sign Up</h1>
               </div>
               <div class="col-7 p-4">
@@ -95,7 +95,7 @@
                     </div>
                   </div>
                   <div class="d-flex justify-content-center mb-3">
-                    <button type="submit" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold">Log In</button>
+                    <button type="submit" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold">Signup</button>
                   </div>
                   <div class="extras">
                     <p class="text-center">Already have an account? <a @click="toggleForm()"  class="text-primary">Login
@@ -107,7 +107,7 @@
                     <hr class="flex-grow-1 my-0">
                   </div>
                   <div class="d-flex flex-wrap justify-content-around justify-content-xl-between">
-                    <button @click="loginWithFacebook()" class="btn btn-primary mb-3" type="button">
+                    <button @click="loginWithFacebook()" class="btn btn-facebook mb-3" type="button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                            class="bi bi-facebook" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -115,7 +115,7 @@
                       </svg>
                       Facebook
                     </button>
-                    <button @click="loginWithGoogle()" class="btn btn-danger mb-3" type="button">
+                    <button @click="loginWithGoogle()" class="btn btn-google mb-3" type="button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                            class="bi bi-google" viewBox="0 0 16 16">
                         <path
@@ -123,7 +123,7 @@
                       </svg>
                       Google
                     </button>
-                    <button @click="loginWithTwitter()" class="btn btn-secondary mb-3" type="button">
+                    <button @click="loginWithTwitter()" class="btn btn-twitter mb-3" type="button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                            class="bi bi-twitter" viewBox="0 0 16 16">
                         <path
@@ -177,7 +177,7 @@ export default {
 
         this.$store.dispatch('fetchUserProfile', user)
 
-        // Redirect to requested page or to hom
+        // Redirect to requested page or to home
         let redirect_url = this.$route.query.redirect || '/'
         this.$router.push(redirect_url)
 
@@ -257,14 +257,6 @@ export default {
 section {
   height: calc(100vh - #{$headerHeight});
 
-}
-
-.bg-orange {
-  background-color: $orange-400;
-}
-
-.bg-purple {
-  background-color: $indigo-400;
 }
 
 .fade-enter-active, .fade-leave-active {

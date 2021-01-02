@@ -9,8 +9,7 @@ module.exports = {
             // // in that case, we can target the `scss` syntax separately using the `scss` option
             scss: {
                 additionalData: `
-                    @import "@/assets/custom.scss";
-                    @import "~bootstrap/scss/bootstrap"; 
+                    @import "@/assets/custom.scss"; 
                 `
             }
 

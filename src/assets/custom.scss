@@ -4,4 +4,25 @@
 $primary: #44AAFD;
 $secondary: #FD9843;
 
-$headerHeight: 70px;
+$facebook: #3b5998;
+$google: #dc3545;
+$twitter: #657786;
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "success":    #198754,
+        "info":       #0dcaf0,
+        "warning":    #ffc107,
+        "danger":     #dc3545,
+        "light":      #f8f9fa,
+        "dark":       #212529,
+        "facebook":   $facebook,
+        "google":     $google,
+        "twitter":    $twitter
+);
+
+@import "~bootstrap/scss/bootstrap";
+
+$headerHeight: 74px;

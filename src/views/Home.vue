@@ -1,18 +1,22 @@
 <template>
   <div>
-    <section class="container-fluid bg-primary p-4 d-flex flex-column align-items-center justify-content-center" id="home-display">
-      <transition name="slide-fade">
-        <h1 v-if="pageLoad" class="display-2 px-5 fw-bolder"><span class="display-1 me-0 fw-bolder">S</span>mart<span
-            class="display-1 me-0 fw-bolder">L</span>iving</h1>
-      </transition>
-      <p class="lead fs-3">
-        The SIMPLE diet and fitness App.
-      </p>
-      <p class="lead fs-3">
-        Get HEALTHIER & STRONGER FASTER.
-      </p>
-      <h1 class="fw-bolder">Sign Up now. Its FREE</h1>
-      <button class="btn btn-secondary border-2 px-5 align-self-center fs-3">Sign Up</button>
+    <section class="bg-light" id="home-display">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-6 d-flex flex-column align-items-center">
+            <transition name="slide-fade">
+              <h1 v-if="pageLoad" class="display-2 px-5 fw-bolder"><span class="display-1 me-0 fw-bolder">S</span>mart<span
+                  class="display-1 me-0 fw-bolder">L</span>iving</h1>
+            </transition>
+            <h1 class="fw-bolder">Sign Up Now. Its FREE</h1>
+            <button class="btn btn-secondary border-2 px-5 align-self-center fs-3">Sign Up</button>
+          </div>
+          <div class="col-6 d-flex flex-column align-items-center rounded">
+<!--            <p>Get Stronger</p>-->
+<!--            <p>Get Healthier</p>-->
+          </div>
+        </div>
+      </div>
     </section>
     <section class="container-fluid bg-dark p-4 d-flex flex-column align-items-center justify-content-center" id="home-features">
 
@@ -48,7 +52,7 @@ export default {
   opacity: 0;
 }
 
-section {
+section, .container, .row {
   min-height: calc(100vh - #{$headerHeight});
 }
 </style>

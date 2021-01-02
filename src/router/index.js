@@ -49,7 +49,7 @@ const router = new VueRouter({
             return {
                 selector: to.hash,
                 // y is height of header
-                offset: { x: 0, y: 70},
+                offset: { x: 0, y: 74},
                 behavior: 'smooth',
             }
         }
