@@ -53,7 +53,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-center d-block">
-            <button type="button" class="btn-close d-block ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button ref="modalClose" type="button" class="btn-close d-block ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
             <h3 class="modal-title w-100 display-3" id="exampleModalLabel">Login</h3>
           </div>
           <div class="modal-body">
@@ -151,11 +151,14 @@ export default {
         const {user, additionalUserInfo} = response
         console.log(user, additionalUserInfo)
 
+        // Close modal
+        this.$refs.modalClose.click()
+
         this.$store.dispatch('fetchUserProfile', user)
 
         // Redirect to requested page or to home
-        let redirect_url = this.$route.query.redirect || '/'
-        this.$router.push(redirect_url)
+        // let redirect_url = this.$route.query.redirect || '/'
+        // this.$router.push(redirect_url)
 
       }, error => {
         // TODO: Add error message for to many logins
@@ -170,12 +173,16 @@ export default {
         const {user, additionalUserInfo} = response
         console.log(user, additionalUserInfo)
 
+        // Close modal
+        this.$refs.modalClose.click()
+
+        // Fetch user Profile from firebase
         this.$store.dispatch('fetchUserProfile', user)
 
+        // OUTDATED CODE
         // Redirect to requested page or to hom
-        let redirect_url = this.$route.query.redirect || '/'
-        this.$router.push(redirect_url)
-
+        // let redirect_url = this.$route.query.redirect || '/'
+        // this.$router.push(redirect_url)
       }, error => {
         console.log(error)
 
@@ -187,11 +194,14 @@ export default {
         const {user, additionalUserInfo} = response
         console.log(user, additionalUserInfo)
 
+        // Close modal
+        this.$refs.modalClose.click()
+
         this.$store.dispatch('fetchUserProfile', user)
 
         // Redirect to requested page or to hom
-        let redirect_url = this.$route.query.redirect || '/'
-        this.$router.push(redirect_url)
+        // let redirect_url = this.$route.query.redirect || '/'
+        // this.$router.push(redirect_url)
 
       }, error => {
         console.log(error)

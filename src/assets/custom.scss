@@ -16,11 +16,13 @@ $theme-colors: (
         "info":       #0dcaf0,
         "warning":    #ffc107,
         "danger":     #dc3545,
-        "light":      #f8f9fa,
+        "light":      #E4F3FF,
+        //"light":      #C8E0D4,
         "dark":       #212529,
         "facebook":   $facebook,
         "google":     $google,
-        "twitter":    $twitter
+        "twitter":    $twitter,
+        "light-green":#DBEBE3
 );
 
 @import "~bootstrap/scss/bootstrap";
