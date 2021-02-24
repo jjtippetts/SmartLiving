@@ -14,22 +14,15 @@
             <!-- Progress Bar -->
             <div class="progress my-3" style="height:50px;">
               <div class="progress-bar bg-secondary progress-bar-striped progress-bar-animated" role="progressbar"
-                   v-bind:style="{width : progressBarWidth + 'px'}" aria-valuenow="" aria-valuemin="0"
+                   v-bind:style="{width : progressBarWidth + '%'}" aria-valuenow="" aria-valuemin="0"
                    aria-valuemax="100"></div>
             </div>
 
+            <!-- Sign Up component -->
             <div class="p-3 bg-light rounded-3 shadow-lg">
-              <UserProfileForm v-if="showUserProfileForm" @progressBar="changeProgress"></UserProfileForm>
+              <UserProfileForm v-if="showUserProfileForm" @progressBar="changeProgress" @toggleForm="toggleForm"></UserProfileForm>
               <SignUpForm v-else></SignUpForm>
             </div>
-          </div>
-
-          <!-- Sign Up Form -->
-          <div class="col-12 col-sm-10 col-lg-6 col-xl-5 col-xxl-4 py-5">
-            <div class="display-4 text-center">Account Info</div>
-            <p class="lead text-center">Sign Up Now</p>
-
-
           </div>
         </transition>
       </div>
@@ -46,7 +39,7 @@ export default {
     return {
       title: "Sign Up",
       showUserProfileForm: true,
-      progressBarWidth: 30
+      progressBarWidth: 15
     }
   },
   components: {

@@ -1,6 +1,4 @@
 // Bootstrap Theming Override
-//$primary: #a44d82;
-//$secondary: #4DA36E;
 $primary: #44AAFD;
 $secondary: #FD9843;
 
@@ -8,7 +6,7 @@ $facebook: #3b5998;
 $google: #dc3545;
 $twitter: #657786;
 
-// scss-docs-start theme-colors-map
+// override bootstrap theme colors
 $theme-colors: (
         "primary":    $primary,
         "secondary":  $secondary,
@@ -17,7 +15,6 @@ $theme-colors: (
         "warning":    #ffc107,
         "danger":     #dc3545,
         "light":      #E4F3FF,
-        //"light":      #C8E0D4,
         "dark":       #212529,
         "facebook":   $facebook,
         "google":     $google,

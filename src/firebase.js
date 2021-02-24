@@ -37,7 +37,6 @@ function loginWithFacebook() {
     });
 }
 
-// Signs-out of Friendly Chat.
 function signOut() {
     // Sign out of Firebase.
     firebase.auth().signOut();
@@ -50,13 +49,11 @@ function getUserName() {
 }
 
 
-// Returns the signed-in user's email.
 function getUserEmail() {
     return firebase.auth().currentUser.email;
 }
 
 
-// Returns true if a user is signed-in.
 function isUserSignedIn() {
     return !!firebase.auth().currentUser;
 }

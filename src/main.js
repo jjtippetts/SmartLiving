@@ -6,7 +6,7 @@ import {auth} from './firebase'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
 
 let app
 auth.onAuthStateChanged(user => {

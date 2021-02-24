@@ -1,13 +1,5 @@
 <template>
   <form class="row pb-3" novalidate @submit.prevent>
-    <div class="col-12 pb-3">
-      <div class="progress" style="height:30px;">
-        <div class="progress-bar bg-secondary progress-bar-striped progress-bar-animated" role="progressbar"
-             v-bind:style="{width : progressBarWidth}" aria-valuenow="" aria-valuemin="0"
-             aria-valuemax="100"></div>
-      </div>
-    </div>
-
     <!-- Name -->
     <div class="col-12 form-floating pb-3">
       <input v-model="name.input" @change="validateName" id="name" class="form-control"
@@ -91,7 +83,7 @@
         {{ weight.goal.feedback }} </p>
     </div>
     <div class="col-12 pb-3">
-      <button class="btn btn-lg btn-primary col-12" type="submit">Next</button>
+      <button class="btn btn-lg btn-primary col-12" @click="validateForm" type="submit">Nexttt</button>
     </div>
   </form>
 </template>
@@ -140,15 +132,11 @@ export default {
       if (this.name.input.length < 2) {
         this.name.isValid = false
         this.name.feedback = "Name must be more than one character"
-        this.$emit("progressBar", -5)
-
       } else if (!/^[a-zA-Z]+$/.test(this.name.input)) {
         this.name.isValid = false
         this.name.feedback = "No special characters"
-        this.$emit("progressBar", -5)
       } else {
         this.name.isValid = true
-        this.$emit("progressBar", 5)
       }
     },
     validateAge() {
@@ -191,17 +179,19 @@ export default {
         this.weight.goal.isValid = true
       }
     },
-    // validateForm() {
-    //   this.validateName()
-    //   this.validateWeight()
-    //   this.validateWeightGoal()
-    //   this.validateAge()
-    //   this.validateHeightFeet()
-    //   this.validateHeightInches()
-    //   if (this.name.isValid && this.age.isValid && this.height.feet.isValid && this.height.inches.isValid && this.weight.isValid && this.weight.goal.isValid) {
-    //
-    //   }
-    // }
+    validateForm() {
+      console.log("Hello")
+      this.validateName()
+      this.validateWeight()
+      this.validateWeightGoal()
+      this.validateAge()
+      this.validateHeightFeet()
+      this.validateHeightInches()
+      if (this.name.isValid && this.age.isValid && this.height.feet.isValid && this.height.inches.isValid && this.weight.isValid && this.weight.goal.isValid) {
+        this.$emit("progressBar",20)
+        this.$emit("toggleForm")
+     }
+    }
   },
   computed: {
     progressBarWidth: function () {
@@ -225,6 +215,7 @@ export default {
         ++count
       }
       console.log((10 + 5 * count) + '%')
+      this.$emit("progressBar", 10 + 5 * count)
       return (10 + 5 * count) + '%'
     }
   },

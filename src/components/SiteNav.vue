@@ -54,7 +54,7 @@
         <div class="modal-content">
           <div class="modal-header text-center d-block">
             <button ref="modalClose" type="button" class="btn-close d-block ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-            <h3 class="modal-title w-100 display-3" id="exampleModalLabel">Login</h3>
+<!--            <h3 class="modal-title w-100 display-3" id="exampleModalLabel">Welcome Back</h3>-->
           </div>
           <div class="modal-body">
             <form @submit="login()" @submit.prevent>
