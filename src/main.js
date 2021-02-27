@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import {auth} from './firebase'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
+import './assets/customBootstrap.scss'
 
 // Vue.config.productionTip = false
 

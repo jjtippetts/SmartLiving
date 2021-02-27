@@ -1,0 +1,26 @@
+// Bootstrap Theming Override
+$primary: #44AAFD;
+$secondary: #FD9843;
+
+$facebook: #3b5998;
+$google: #dc3545;
+$twitter: #657786;
+
+//// override bootstrap theme colors
+//$theme-colors: (
+//        "primary":    $primary,
+//        "secondary":  $secondary,
+//        "success":    #198754,
+//        "info":       #0dcaf0,
+//        "warning":    #ffc107,
+//        "danger":     #dc3545,
+//        "light":      #E4F3FF,
+//        "dark":       #212529,
+//        "facebook":   $facebook,
+//        "google":     $google,
+//        "twitter":    $twitter,
+//        "light-green":#DBEBE3
+//);
+
+
+@import "~bootstrap/scss/bootstrap";

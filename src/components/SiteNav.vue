@@ -76,9 +76,6 @@
               <div class="d-grid gap-2">
                 <button class="btn btn-lg btn-primary" type="button">Login</button>
               </div>
-              <!--              <div class="d-flex justify-content-center mb-3">-->
-              <!--                <button type="submit" class="btn btn-lg btn-primary rounded-pill px-5 py-2 fw-bold">Log In</button>-->
-              <!--              </div>-->
             </form>
             <div class="d-flex flex-row align-items-center my-3">
               <hr class="flex-grow-1 my-0">
@@ -126,6 +123,7 @@
 </template>
 
 <script>
+import router from '../router/index'
 
 export default {
   name: 'SiteNav',
@@ -177,7 +175,10 @@ export default {
         this.$refs.modalClose.click()
 
         // Fetch user Profile from firebase
-        this.$store.dispatch('fetchUserProfile', user)
+        this.$store.dispatch('fetchUserProfile', user).then(function(){
+          router.push("/diet")
+        })
+
 
         // OUTDATED CODE
         // Redirect to requested page or to hom
@@ -197,7 +198,10 @@ export default {
         // Close modal
         this.$refs.modalClose.click()
 
-        this.$store.dispatch('fetchUserProfile', user)
+        // Fetch user Profile from firebase
+        this.$store.dispatch('fetchUserProfile', user).then(function(){
+          router.push("/diet")
+        })
 
         // Redirect to requested page or to hom
         // let redirect_url = this.$route.query.redirect || '/'

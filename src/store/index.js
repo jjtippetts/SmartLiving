@@ -56,9 +56,11 @@ export default new Vuex.Store({
             // fetch user profile
             try {
                 const userProfile = await fb.usersCollection.doc(user.uid).get()
+                console.log(user.uid);
                 if(userProfile.exists){
                     commit('setUserProfile', userProfile.data())
-                } else {
+                }
+                else {
                     // User does not have profile, ask user for additional info
                     await router.push('/login/additional-info')
                 }

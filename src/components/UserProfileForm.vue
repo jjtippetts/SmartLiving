@@ -190,7 +190,10 @@ export default {
       if (this.name.isValid && this.age.isValid && this.height.feet.isValid && this.height.inches.isValid && this.weight.isValid && this.weight.goal.isValid) {
         this.$emit("progressBar",20)
         this.$emit("toggleForm")
-     }
+      }
+      else {
+        console.log("hi");
+      }
     }
   },
   computed: {

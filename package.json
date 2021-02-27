@@ -9,11 +9,12 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.6.0",
-    "bootstrap": "^5.0.0-beta1",
+    "bootstrap": "^5.0.0-beta2",
     "core-js": "^3.6.5",
     "firebase": "^8.2.6",
     "velocity-animate": "^1.5.2",
     "vue": "^2.6.11",
+    "vue-material-design-icons": "^4.11.0",
     "vue-router": "^3.4.9",
     "vuex": "^3.6.0"
   },
@@ -31,6 +32,8 @@
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.1.0",
     "sass": "^1.26.5",
+    "postcss-loader": "^5.0.0",
+    "autoprefixer": "^10.2.4",
     "sass-loader": "10.1.1",
     "vue-template-compiler": "^2.6.11"
   },

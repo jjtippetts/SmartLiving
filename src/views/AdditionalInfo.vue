@@ -192,17 +192,17 @@ export default {
         this.weight.goal.isValid = true
       }
     },
-    // validateForm() {
-    //   this.validateName()
-    //   this.validateWeight()
-    //   this.validateWeightGoal()
-    //   this.validateAge()
-    //   this.validateHeightFeet()
-    //   this.validateHeightInches()
-    //   if (this.name.isValid && this.age.isValid && this.height.feet.isValid && this.height.inches.isValid && this.weight.isValid && this.weight.goal.isValid) {
-    //
-    //   }
-    // }
+    validateForm() {
+      this.validateName()
+      this.validateWeight()
+      this.validateWeightGoal()
+      this.validateAge()
+      this.validateHeightFeet()
+      this.validateHeightInches()
+      if (this.name.isValid && this.age.isValid && this.height.feet.isValid && this.height.inches.isValid && this.weight.isValid && this.weight.goal.isValid) {
+        console.log("hi")
+      }
+    }
   },
   computed: {
     isNameValid: function () {
