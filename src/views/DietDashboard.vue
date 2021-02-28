@@ -34,70 +34,55 @@
             div.d-flex.justify-content-between.align-items-center
               h1 {{selectedDiet.name}}
               div.d-flex
-                btn.btn.btn-primary.btn-lg.me-2 Save
-                btn.btn.btn-secondary.btn-lg Download
-            form(v-on:submit.prevent="addFood(meal)")
-              table.table.table-primary.table-striped.table-sm.caption-top(v-for="meal in selectedDiet.meals")
-                caption {{meal.name}}
-                thead
-                  tr
-                    th(scope="col") Name
-                    th(scope="col") Calories
-                    th(scope="col") Carbs
-                    th(scope="col") Fat
-                    th(scope="col") Protein
-                    th(scope="col")
-                tbody
-                  tr(v-for="food in meal.foods")
-                    td {{food.name}}
-                    td {{food.calories}}
-                    td {{food.carbs}}
-                    td {{food.fat}}
-                    td {{food.protein}}
-                    td
-                      button.btn.btn-sm.btn-primary(v-on:click="removeFood(meal, food)")
-                        Delete
-                  tr
-                    td
-                      label.form-label.d-none
-                      input.form-control(placeholder="Strawberries" type="text")
-                    td
-                      input.form-control(placeholder="40")
-                    td
-                      input.form-control(placeholder="9")
-                    td
-                      input.form-control(placeholder="0")
-                    td
-                      input.form-control(placeholder="1")
-                    td
-                      button.btn.btn-sm.btn-primary(type="submit")
-                        Plus
-                tfoot
-                  tr
-                    td
-                    td {{caloriesInMeal(meal)}}
-                    td {{carbsInMeal(meal)}}
-                    td {{fatInMeal(meal)}}
-                    td {{proteinInMeal(meal)}}
-                    td
-              table.table.table-primary.table-striped.table-sm.caption-top
-                caption Diet Totals
-                thead
-                  tr
-                    th(scope="col" width="19%") Name
-                    th(scope="col" width="19%") Calories
-                    th(scope="col" width="19%") Carbs
-                    th(scope="col" width="19%") Fat
-                    th(scope="col" width="19%") Protein
-                    th(scope="col" width="19%")
-                tbody
-                  tr
-                    td(scope="col") {{selectedDiet.name}}
-                    td(scope="col") {{caloriesInDiet(selectedDiet)}}
-                    td(scope="col") {{carbsInDiet(selectedDiet)}}
-                    td(scope="col") {{fatInDiet(selectedDiet)}}
-                    td(scope="col") {{proteinInDiet(selectedDiet)}}
-                    td(scope="col")
+                button.btn.btn-primary.btn-lg.me-2 Save
+                button.btn.btn-secondary.btn-lg Download
+            table.table.table-primary.table-striped.table-sm.caption-top(v-for="(meal, index) in selectedDiet.meals" )
+              caption {{meal.name}}
+              thead
+                tr
+                  th(scope="col") Name
+                  th(scope="col") Calories
+                  th(scope="col") Carbs
+                  th(scope="col") Fat
+                  th(scope="col") Protein
+                  th(scope="col")
+              tbody
+                tr(v-for="food in meal.foods")
+                  td {{food.name}}
+                  td {{food.calories}}
+                  td {{food.carbs}}
+                  td {{food.fat}}
+                  td {{food.protein}}
+                  td
+                    button.btn.btn-sm.btn-primary(v-on:click="removeFood(meal, food)")
+                      Delete
+                table-row-add-food(v-bind:meal="meal")
+              tfoot
+                tr
+                  td
+                  td {{caloriesInMeal(meal)}}
+                  td {{carbsInMeal(meal)}}
+                  td {{fatInMeal(meal)}}
+                  td {{proteinInMeal(meal)}}
+                  td
+            table.table.table-primary.table-striped.table-sm.caption-top
+              caption Diet Totals
+              thead
+                tr
+                  th(scope="col" width="19%") Name
+                  th(scope="col" width="19%") Calories
+                  th(scope="col" width="19%") Carbs
+                  th(scope="col" width="19%") Fat
+                  th(scope="col" width="19%") Protein
+                  th(scope="col" width="19%")
+              tbody
+                tr
+                  td(scope="col") {{selectedDiet.name}}
+                  td(scope="col") {{caloriesInDiet(selectedDiet)}}
+                  td(scope="col") {{carbsInDiet(selectedDiet)}}
+                  td(scope="col") {{fatInDiet(selectedDiet)}}
+                  td(scope="col") {{proteinInDiet(selectedDiet)}}
+                  td(scope="col")
 
 </template>
 
@@ -106,15 +91,18 @@
 import Delete from 'vue-material-design-icons/Delete.vue';
 import Plus from 'vue-material-design-icons/Plus.vue';
 import Search from 'vue-material-design-icons/Magnify.vue';
+import tableRowAddFood from "@/components/tableRowAddFood";
 
 export default {
   components: {
     Delete,
     Plus,
-    Search
+    Search,
+    tableRowAddFood
   },
   data(){
     return {
+
       selectedDiet: null,
       userDiets: [
         {
@@ -223,7 +211,6 @@ export default {
     },
     caloriesInDiet: function(diet){
       let totalCalories = 0;
-      console.log(diet)
       diet.meals.forEach(function(meal){
         totalCalories += this.caloriesInMeal(meal);
       }, this)
