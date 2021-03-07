@@ -46,8 +46,9 @@
                   th(scope="col") Fat
                   th(scope="col") Protein
                   th(scope="col")
-              tbody
-                tr(v-for="food in meal.foods")
+              draggable(v-model="meal.foods" group="foods" @start="dar=true" @end="drag=false" tag="tbody" draggable=".foods")
+                tr.foods(v-for="food in meal.foods" :key="food.name")
+
                   td {{food.name}}
                   td {{food.calories}}
                   td {{food.carbs}}
@@ -56,7 +57,8 @@
                   td
                     button.btn.btn-sm.btn-primary(v-on:click="removeFood(meal, food)")
                       Delete
-                table-row-add-food(v-bind:meal="meal")
+
+                table-row-add-food(slot="footer" v-bind:meal="meal")
               tfoot
                 tr
                   td
@@ -92,17 +94,18 @@ import Delete from 'vue-material-design-icons/Delete.vue';
 import Plus from 'vue-material-design-icons/Plus.vue';
 import Search from 'vue-material-design-icons/Magnify.vue';
 import tableRowAddFood from "@/components/tableRowAddFood";
+import draggable from 'vuedraggable'
 
 export default {
   components: {
     Delete,
     Plus,
     Search,
-    tableRowAddFood
+    tableRowAddFood,
+    draggable
   },
   data(){
     return {
-
       selectedDiet: null,
       userDiets: [
         {
