@@ -15,8 +15,8 @@
                     Plus
             hr
             div.list-group-flush.w-100
-              button.list-group-item.list-group-item-action.w-100.bg-transparent.fs-4(v-for="diet in userDiets" :key="diet.name" v-on:click="selectedDiet = diet") {{diet.name}}
-                p.fs-6 &#8226; {{caloriesInDiet(diet)}} Cal &#8226; {{carbsInDiet(diet)}} g &#8226; {{fatInDiet(diet)}} g &#8226; {{proteinInDiet(diet)}} g
+              button.list-group-item.list-group-item-action.w-100.bg-transparent.fs-4(v-for="diet in userDiets" :key="diet.name" v-on:click="selectedDiet = diet" :class="{active: diet === selectedDiet}") {{diet.name}}
+                p.fs-6 Calories {{caloriesInDiet(diet)}} kcal &#8226; Carbs {{carbsInDiet(diet)}} g &#8226; Fat {{fatInDiet(diet)}} g &#8226; Protein {{proteinInDiet(diet)}} g
         div#food-selection-component.bg-light.border.rounded-3.shadow-lg.mt-3
           div.p-3
             h4.fw-bolder Search for Food
@@ -118,7 +118,7 @@ export default {
     tableRowAddFood,
     draggable
   },
-  data(){
+  data() {
     return {
       selectedDiet: null,
       newMealName: "",
@@ -221,76 +221,76 @@ export default {
     }
   },
   methods: {
-    addFood(meal, food){
+    addFood(meal, food) {
       meal.foods.push(food)
     },
-    removeFood(meal, food){
+    removeFood(meal, food) {
       meal.foods.splice(meal.foods.indexOf(food), 1)
     },
-    caloriesInDiet: function(diet){
+    caloriesInDiet: function (diet) {
       let totalCalories = 0;
-      diet.meals.forEach(function(meal){
+      diet.meals.forEach(function (meal) {
         totalCalories += this.caloriesInMeal(meal);
       }, this)
       return totalCalories;
     },
-    carbsInDiet: function(diet){
+    carbsInDiet: function (diet) {
       let totalCarbs = 0;
-      diet.meals.forEach(function(meal){
+      diet.meals.forEach(function (meal) {
         totalCarbs += this.carbsInMeal(meal);
       }, this)
       return totalCarbs;
     },
-    fatInDiet: function(diet){
+    fatInDiet: function (diet) {
       let totalFat = 0;
-      diet.meals.forEach(function(meal){
+      diet.meals.forEach(function (meal) {
         totalFat += this.fatInMeal(meal)
       }, this)
       return totalFat;
     },
-    proteinInDiet: function(diet){
+    proteinInDiet: function (diet) {
       let totalProtein = 0;
-      diet.meals.forEach(function (meal){
+      diet.meals.forEach(function (meal) {
         totalProtein += this.proteinInMeal(meal);
       }, this)
       return totalProtein;
     },
-    caloriesInMeal: function(meal){
+    caloriesInMeal: function (meal) {
       let totalCalories = 0;
-      meal.foods.forEach(function(food){
+      meal.foods.forEach(function (food) {
         totalCalories += food.calories;
       })
       return totalCalories;
     },
-    carbsInMeal: function(meal){
+    carbsInMeal: function (meal) {
       let totalCarbs = 0;
-      meal.foods.forEach(function(food){
+      meal.foods.forEach(function (food) {
         totalCarbs += food.carbs;
       })
       return totalCarbs;
     },
-    fatInMeal: function(meal){
+    fatInMeal: function (meal) {
       let totalFat = 0;
-      meal.foods.forEach(function(food){
+      meal.foods.forEach(function (food) {
         totalFat += food.fat;
       })
       return totalFat;
     },
-    proteinInMeal: function(meal){
+    proteinInMeal: function (meal) {
       let totalProtein = 0;
-      meal.foods.forEach(function (food){
+      meal.foods.forEach(function (food) {
         totalProtein += food.protein;
       })
       return totalProtein;
     },
-    addMeal: function(diet){
+    addMeal: function (diet) {
       let meal = {
         name: this.newMealName,
         foods: []
       }
       diet.meals.push(meal)
     },
-    addUserDiets: function(diet){
+    addUserDiets: function (diet) {
       this.userDiets.push(diet)
     },
   },
@@ -324,5 +324,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .active {
+    background-color: $primary !important;
+  }
 </style>
