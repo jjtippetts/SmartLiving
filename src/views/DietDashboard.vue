@@ -67,6 +67,17 @@
                   td {{fatInMeal(meal)}}
                   td {{proteinInMeal(meal)}}
                   td
+            form(v-on:submit.prevent="addMeal(selectedDiet)")
+              table.table.table-primary.table-striped.table-sm.caption-top
+                caption Add a Meal
+                tbody
+                  tr
+                    td(scope="col")
+                      button.btn.btn-sm.btn-primary
+                        Plus
+                    td(scope="col")
+                      input.form-control(v-model.text="newMealName" type="text" placeholder="Meal Name" required)
+
             table.table.table-primary.table-striped.table-sm.caption-top
               caption Diet Totals
               thead
@@ -95,6 +106,9 @@ import Plus from 'vue-material-design-icons/Plus.vue';
 import Search from 'vue-material-design-icons/Magnify.vue';
 import tableRowAddFood from "@/components/tableRowAddFood";
 import draggable from 'vuedraggable'
+// import * as fb from "@/firebase";
+// import store from '../store/index';
+// import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -107,6 +121,7 @@ export default {
   data(){
     return {
       selectedDiet: null,
+      newMealName: "",
       userDiets: [
         {
           name: 'smart diet',
@@ -268,14 +283,43 @@ export default {
       })
       return totalProtein;
     },
+    addMeal: function(diet){
+      let meal = {
+        name: this.newMealName,
+        foods: []
+      }
+      diet.meals.push(meal)
+    },
+    addUserDiets: function(diet){
+      this.userDiets.push(diet)
+    },
   },
-  created(){
-    // let user = fb.auth().currentUser;
-    //
-    // fb.usersCollection.doc(user.uid).get().then(
-    //     ({data}) => this.userDiet = data
-    // )
-  }
+  // beforeRouteEnter(to, from, next) {
+  //   console.log(to, from, next)
+  //   // console.log(this.$store.state.userDocumentId)
+  //   let userDocumentId = store.state.userDocumentId
+  //   let user = store.state.userSignedIn
+  //   console.log(user)
+  //   console.log(fb.isUserSignedIn())
+  //   console.log(fb.getUserName())
+  //   console.log(store.state.userProfile)
+  //
+  //   // this.addUserDiets("hi")
+  //   console.log(userDocumentId)
+  //   fb.usersCollection.doc(userDocumentId).collection('diets').get().then((querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //       // doc.data() is never undefined for query doc snapshots
+  //       console.log(doc.id, " => ", doc.data());
+  //       // this.addUserDiets(doc.data())
+  //     });
+  //   });
+  // },
+  // mounted() {
+  //   this.fetchData()
+  // },
+  // computed: {
+  //   ...mapState(['userDocumentId'])
+  // }
 }
 </script>
 

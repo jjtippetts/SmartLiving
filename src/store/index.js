@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        userDocumentId: '',
         userProfile: {},
         userSignedIn: false
     },
@@ -18,6 +19,10 @@ export default new Vuex.Store({
         },
         setUserSignedIn(state, val) {
             state.userSignedIn = val
+        },
+        setUserDocumentId(state, val){
+            state.userDocumentId = val
+            console.log(state.userDocumentId)
         }
     },
     actions: {
@@ -58,7 +63,8 @@ export default new Vuex.Store({
                 const userProfile = await fb.usersCollection.doc(user.uid).get()
                 console.log(user.uid);
                 if(userProfile.exists){
-                    commit('setUserProfile', userProfile.data())
+                    commit('setUserProfile', userProfile.data());
+                    commit('setUserDocumentId', user.uid);
                 }
                 else {
                     // User does not have profile, ask user for additional info
