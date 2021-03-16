@@ -1,7 +1,7 @@
 <template lang="pug">
 form(v-on:submit.prevent="addDiet()")
   div.form-group
-    label.form-label Create a New Diet Plannn
+    label.form-label Create a New Diet Plan
     div.input-group
       input.form-control(v-model="newDietName" placeholder="Diet Name" required)
       button.btn.btn-primary(type="submit")

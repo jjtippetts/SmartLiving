@@ -30,36 +30,37 @@
               div.d-flex
                 button.btn.btn-primary.btn-lg.me-2 Save
                 button.btn.btn-secondary.btn-lg Download
-            table.table.table-primary.table-striped.table-sm.caption-top(v-for="(meal, index) in selectedDiet.meals" )
-              caption {{meal.name}}
-              thead
-                tr
-                  th(scope="col") Name
-                  th(scope="col") Calories
-                  th(scope="col") Carbs
-                  th(scope="col") Fat
-                  th(scope="col") Protein
-                  th(scope="col")
-              draggable(v-model="meal.foods" group="foods" @start="dar=true" @end="drag=false" tag="tbody" draggable=".foods")
-                tr.foods(v-for="food in meal.foods" :key="food.name")
-                  td {{food.name}}
-                  td {{food.calories}}
-                  td {{food.carbs}}
-                  td {{food.fat}}
-                  td {{food.protein}}
-                  td
-                    button.btn.btn-sm.btn-primary(v-on:click="removeFood(meal, food)")
-                      Delete
+            draggable(v-model="selectedDiet.meals" group="diets" draggable=".diets")
+              table.diets.table.table-primary.table-striped.table-sm.caption-top(v-for="(meal, index) in selectedDiet.meals")
+                caption {{meal.name}}
+                thead
+                  tr
+                    th(scope="col") Name
+                    th(scope="col") Calories
+                    th(scope="col") Carbs
+                    th(scope="col") Fat
+                    th(scope="col") Protein
+                    th(scope="col")
+                draggable(v-model="meal.foods" group="foods" @start="drag=true" @end="drag=false" tag="tbody" draggable=".foods")
+                  tr.foods(v-for="food in meal.foods" :key="food.name")
+                    td {{food.name}}
+                    td {{food.calories}}
+                    td {{food.carbs}}
+                    td {{food.fat}}
+                    td {{food.protein}}
+                    td
+                      button.btn.btn-sm.btn-primary(v-on:click="removeFood(meal, food)")
+                        Delete
 
-                table-row-add-food(slot="footer" v-bind:meal="meal")
-              tfoot
-                tr
-                  td
-                  td {{caloriesInMeal(meal)}}
-                  td {{carbsInMeal(meal)}}
-                  td {{fatInMeal(meal)}}
-                  td {{proteinInMeal(meal)}}
-                  td
+                  table-row-add-food(slot="footer" v-bind:meal="meal")
+                tfoot
+                  tr
+                    td
+                    td {{caloriesInMeal(meal)}}
+                    td {{carbsInMeal(meal)}}
+                    td {{fatInMeal(meal)}}
+                    td {{proteinInMeal(meal)}}
+                    td
             form(v-on:submit.prevent="addMeal(selectedDiet)")
               table.table.table-primary.table-striped.table-sm.caption-top
                 caption Add a Meal
