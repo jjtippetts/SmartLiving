@@ -2,17 +2,11 @@
   div.container-fluid
     div.row
       div.col-3
-        div#diet-selection-component.bg-light.border.rounded-3.shadow-lg.mt-3
+        div#diet-selection-component.bg-light.border.rounded-3.shadow-lg.mt-3.overflow-auto
           div.p-3
             h4.fw-bolder All Diet Plans
             hr.mt-0
-            form
-              div.form-group
-                label.form-label Create a New Diet Plan
-                div.input-group
-                  input.form-control(placeholder="Diet Name")
-                  button.btn.btn-primary
-                    Plus
+            add-diet-form(v-bind:userDiets="userDiets")
             hr
             div.list-group-flush.w-100
               button.list-group-item.list-group-item-action.w-100.bg-transparent.fs-4(v-for="diet in userDiets" :key="diet.name" v-on:click="selectedDiet = diet" :class="{active: diet === selectedDiet}") {{diet.name}}
@@ -48,7 +42,6 @@
                   th(scope="col")
               draggable(v-model="meal.foods" group="foods" @start="dar=true" @end="drag=false" tag="tbody" draggable=".foods")
                 tr.foods(v-for="food in meal.foods" :key="food.name")
-
                   td {{food.name}}
                   td {{food.calories}}
                   td {{food.carbs}}
@@ -104,7 +97,8 @@
 import Delete from 'vue-material-design-icons/Delete.vue';
 import Plus from 'vue-material-design-icons/Plus.vue';
 import Search from 'vue-material-design-icons/Magnify.vue';
-import tableRowAddFood from "@/components/tableRowAddFood";
+import TableRowAddFood from "@/components/TableRowAddFood";
+import AddDietForm from "@/components/AddDietForm";
 import draggable from 'vuedraggable'
 // import * as fb from "@/firebase";
 // import store from '../store/index';
@@ -115,7 +109,8 @@ export default {
     Delete,
     Plus,
     Search,
-    tableRowAddFood,
+    TableRowAddFood,
+    AddDietForm,
     draggable
   },
   data() {
@@ -326,5 +321,9 @@ export default {
 <style lang="scss" scoped>
   .active {
     background-color: $primary !important;
+  }
+
+  #diet-selection-component {
+    max-height: 60vh;
   }
 </style>
